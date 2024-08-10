@@ -7,6 +7,9 @@ import {
 import { Provider, useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { Box } from "@mui/material";
+import DashboardPage from "./components/DashboardPage";
+import OurVisionPage from "./components/OurVisionPage";
+import NotFoundPage from "./components/NotFoundPage";
 
 const DynamicRemoteStore = () => {
   const url = import.meta.env.REACT_APP_STORE_URL;
@@ -50,16 +53,10 @@ const App = () => {
     <Provider store={store}>
       <Box component="main" sx={{ p: 5 }}>
         <Routes>
-          <Route path="/dashboard" element={<h1>Something on dashboard</h1>} />
-          <Route
-            path="/vision"
-            element={<h1>Our Vision for this project</h1>}
-          />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/vision" element={<OurVisionPage />} />
 
-          {/* Using path="*"" means "match anything", so this route
-          acts like a catch-all for URLs that we don't have explicit
-          routes for. */}
-          <Route path="*" element={<h1>Page not not Found</h1>} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Box>
     </Provider>
