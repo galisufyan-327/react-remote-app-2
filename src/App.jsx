@@ -7,6 +7,9 @@ import {
 import { Provider } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { Box } from "@mui/material";
+import LandingPage from "./components/LandingPage";
+import AboutPage from "./components/AboutPage";
+import NotFoundPage from "./components/NotFoundPage";
 
 const DynamicRemoteStore = () => {
   const url = import.meta.env.REACT_APP_STORE_URL;
@@ -40,10 +43,10 @@ const App = () => {
     <Provider store={store}>
       <Box component="main" sx={{ p: 5 }}>
         <Routes>
-          <Route path="/" element={<h1>Landing page</h1>} />
-          <Route path="/about" element={<button>Placeholder button</button>} />
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/about" element={<AboutPage />} />
 
-          <Route path="*" element={<h1>Fallback page</h1>} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Box>
     </Provider>
